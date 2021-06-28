@@ -34,7 +34,7 @@ const Image = styled.div`
 export function  Logo() {
   return <LogoContainer>
     <Image>
-      <img src={VesselogoImg} />
+      <img src={VesselogoImg} alt='imglogo' />
     </Image>
     <LogoText>VesselExpress.</LogoText>
   </LogoContainer>
