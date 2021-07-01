@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import tw from 'twin.macro'
 import {slide as Menu } from 'react-burger-menu'
@@ -15,7 +15,7 @@ list-none
 `}
 `;
 
-const NavItem = styled.li`
+const NavItem = styled.li<{ menu?: any}>`
 ${tw`
       text-sm
       md:text-base
@@ -28,7 +28,17 @@ ${tw`
       duration-300
       ease-in-out 
       hover: text-green-700
-`}
+`};
+${({ menu }) =>
+    menu &&
+    css`
+      ${tw`
+      text-white
+      text-xl
+      mb-3
+      focus:text-white
+    `};
+    `};
   
 `;
 
@@ -37,18 +47,18 @@ export function NavItems() {
 
   if(isMobile) 
   return (
-    <Menu styles = {menuStyles}>
+    <Menu  right styles = {menuStyles}>
       <ListContainer>
-    <NavItem>
+    <NavItem menu>
       <a href="#">Home</a>
     </NavItem>
-    <NavItem>
+    <NavItem menu>
       <a href="#">Vessels</a>
     </NavItem>
-    <NavItem>
+    <NavItem menu>
       <a href="#">Services</a>
     </NavItem>
-    <NavItem>
+    <NavItem menu>
       <a href="#">ContactUs</a>
     </NavItem>
   </ListContainer>
